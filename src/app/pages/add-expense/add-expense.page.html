@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>add-expense</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">add-expense</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+    <div class="align-right">
+      <ion-button >Capture Receipt</ion-button>
+    </div>
+
+    <div class="ion-padding">
+
+      <ion-input type="number" pattern="^\d*\.?\d*$" [(ngModel)]="inputText" label="Expense Amount" label-placement="floating" fill="outline" placeholder="Enter Amount"></ion-input>
+    </div>
+  
+    
+    <div class="align-center">
+      <ion-button (click)="addExpense()">Submit</ion-button>
+    </div>
+  
+</ion-content>

@@ -1,0 +1,22 @@
+.align-right {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5px;
+    padding-top: 5px;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+
+  .align-center {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+  }
