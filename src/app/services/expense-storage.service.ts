@@ -24,18 +24,33 @@ export class ExpenseStorageService {
 
   async createStorage(){
     await this.storage.create();
+    const keyDate = moment().format('YYYY-MM-DD');
+    const expenses = await this.getExpense(keyDate);
+    console.log(`expenses ${JSON.stringify(expenses)}`);
+    this.store.dispatch(new ExpenseAction.LoadExpenses({ expenses : expenses }));
+
   }
 
   async addExpense(expense: any){
     const expenseId = uuid.v4();
     const date = moment().format('YYYY-MM-DD hh:mm A');
+
     let expenseValue : Expense = {
       expenseId : expenseId,
       amount : expense.amount,
-      date : date
+      date : date,
+      src : expense.src
     };
 
     this.store.dispatch(new ExpenseAction.CreateExpense({ expense : expenseValue }));
+
+    const keyDate = moment().format('YYYY-MM-DD');
+    
+    var expenseArray : Expense[] = await this.getExpense(keyDate);
+    
+    expenseArray.push(expenseValue);
+
+    const result = await this.storage.set(keyDate, expenseArray);
 
     /*const currentDate = moment().format('YYYY-MM-DD');
     const date = moment().format('YYYY-MM-DD hh:mm A');
@@ -65,7 +80,7 @@ export class ExpenseStorageService {
 
   }
 
-  async getExpense(key: string){
+  async getExpense(key: string) {
     return await this.storage.get(key);
   }
 

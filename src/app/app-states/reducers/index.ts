@@ -18,6 +18,6 @@ import {
     : [];
 
 
-export const getNoteState = (state: AppState) => state.data;
-export const getAllExpenses = createSelector(getNoteState, fromExpense.getExpenses);
-export const getExpenseById = createSelector(getNoteState, fromExpense.getExpenseById);
+export const getExpenseState = (state: AppState) => state.data;
+export const getAllExpenses = createSelector(getExpenseState, fromExpense.getExpenses);
+export const getExpenseById = createSelector(getExpenseState, fromExpense.getExpenseById);

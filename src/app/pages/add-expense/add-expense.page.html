@@ -13,7 +13,7 @@
 
 
     <div class="align-right">
-      <ion-button >Capture Receipt</ion-button>
+      <ion-button (click)="capture()">Capture Receipt</ion-button>
     </div>
 
     <div class="ion-padding">
@@ -21,6 +21,7 @@
       <ion-input type="number" pattern="^\d*\.?\d*$" [(ngModel)]="inputText" label="Expense Amount" label-placement="floating" fill="outline" placeholder="Enter Amount"></ion-input>
     </div>
   
+    <img src="{{src}}"/>
     
     <div class="align-center">
       <ion-button (click)="addExpense()">Submit</ion-button>

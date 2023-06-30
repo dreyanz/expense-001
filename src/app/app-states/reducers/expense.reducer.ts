@@ -14,7 +14,17 @@ export function reducer(
     action: fromExpense.ActionUnion
 ): ExpenseState {
     switch (action.type) {
+        case fromExpense.ActionTypes.LoadExpenses: {
+          return {
+            ...state,
+            data: action.payload.expenses
+          }
+        }
+
         case fromExpense.ActionTypes.CreateExpense: {
+
+          //tod add it to local storage
+
           return {
             ...state,
             data: [...state.data, action.payload.expense].reverse(),
